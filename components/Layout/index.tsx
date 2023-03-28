@@ -4,21 +4,22 @@ import Navbar from '@/components/Navbar'
 import MobileBackground from '@/public/assets/home/background-home-mobile.jpg'
 import TabletBackground from '@/public/assets/home/background-home-tablet.jpg'
 import DesktopBackground from '@/public/assets/home/background-home-desktop.jpg'
+import Image from 'next/image'
 
 const theme = require('tailwindcss/defaultTheme')
 
 const Index = ({
   children,
   title = '',
-  mobileBackground = MobileBackground.src,
-  tabletBackground = TabletBackground.src,
-  desktopBackground = DesktopBackground.src,
+  mobileBackground = MobileBackground,
+  tabletBackground = TabletBackground,
+  desktopBackground = DesktopBackground,
 }: {
   children: React.ReactNode
   title?: string
-  mobileBackground?: string
-  tabletBackground?: string
-  desktopBackground?: string
+  mobileBackground?: any
+  tabletBackground?: any
+  desktopBackground?: any
 }) => {
   // Define breakpoints as an object with names and minimum widths
   const breakpoints = {
@@ -48,11 +49,11 @@ const Index = ({
   }, [])
 
   // Determine the background URL based on the current breakpoint
-  let backgroundUrl = desktopBackground
+  let background = desktopBackground
   if (currentBreakpoint === 'base') {
-    backgroundUrl = mobileBackground
+    background = mobileBackground
   } else if (currentBreakpoint === 'sm') {
-    backgroundUrl = tabletBackground
+    background = tabletBackground
   }
 
   return (
@@ -65,10 +66,18 @@ const Index = ({
       </Head>
 
       {/* Use Tailwind classes to set the background image style, set the background image using style */}
-      <main
-        className={`relative h-screen bg-cover bg-bottom p-6 pt-24 text-tertiary lg:bg-right`}
-        style={{ backgroundImage: `url(${backgroundUrl})` }}
-      >
+      <main className={`relative h-screen  p-6 pt-24 text-tertiary `}>
+        <Image
+          src={background}
+          alt={'Background, view of the earth from space'}
+          fill={true}
+          quality={100}
+          priority={true}
+          placeholder={'empty'}
+          className={
+            'absolute top-0 bottom-0 left-0 right-0 -z-10 object-cover object-bottom lg:object-right'
+          }
+        />
         <Navbar />
         {children}
       </main>
