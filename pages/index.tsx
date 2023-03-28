@@ -34,6 +34,28 @@ export default function Home() {
             world experience!
           </p>
         </div>
+        {/*[28.125rem]*/}
+        <div
+          className={
+            'group flex h-48 w-48  items-center  justify-center rounded-full md:h-[22rem] md:w-[22rem]  lg:h-[28.125rem] lg:w-[28.125rem]'
+          }
+        >
+          <div
+            className={
+              'flex h-36 w-36 cursor-pointer items-center justify-center rounded-full bg-tertiary bg-opacity-10 transition-all duration-500 ease-in-out hover:h-48 hover:w-48 md:h-[15rem] md:w-[15rem] md:hover:h-[22rem] md:hover:w-[22rem] lg:h-[17.125rem] lg:w-[17.125rem] lg:hover:h-[28.125rem] lg:hover:w-[28.125rem] '
+            }
+          >
+            <div
+              className={
+                'flex h-36 w-36 items-center justify-center rounded-full bg-tertiary md:h-[15rem] md:w-[15rem] lg:h-[17.125rem] lg:w-[17.125rem]'
+              }
+            >
+              <h3 className={'font-serif text-lg text-primary lg:text-[2rem]'}>
+                EXPLORE
+              </h3>
+            </div>
+          </div>
+        </div>
       </Layout>
     </>
   )

@@ -26,6 +26,11 @@ module.exports = {
       letterSpacing: {
         subtitle: '0.16875em',
       },
+
+      transitionProperty: {
+        height: 'height',
+        width: 'width',
+      },
     },
   },
   plugins: [],
