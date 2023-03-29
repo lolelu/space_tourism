@@ -9,18 +9,18 @@ export default function Home() {
     <>
       <Layout
         title={'Home'}
-        mobileBackground={MobileBackground.src}
-        tabletBackground={TabletBackground.src}
-        desktopBackground={DesktopBackground.src}
+        mobileBackground={MobileBackground}
+        tabletBackground={TabletBackground}
+        desktopBackground={DesktopBackground}
       >
         <div
           className={
-            'flex h-full flex-col items-center justify-between pb-6 md:justify-around'
+            'flex h-full flex-col items-center justify-between pb-6 md:justify-around lg:flex-row lg:items-end lg:justify-between lg:px-24 lg:pb-24 xl:px-36'
           }
         >
           <div
             className={
-              ' flex max-w-xs flex-col items-center justify-center gap-4 pt-4 text-center md:max-w-md'
+              ' flex max-w-xs flex-col items-center justify-center gap-4 pt-4 text-center md:max-w-md lg:items-start lg:text-left'
             }
           >
             <h2

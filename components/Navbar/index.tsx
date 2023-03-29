@@ -33,9 +33,9 @@ const menuLinks = [
 const Index = () => {
   const [mobileMenuIsOpen, setMobileMenuIsOpen] = useState(false)
   return (
-    <nav>
+    <nav className={'relative isolate z-10'}>
       {/*  NAVBAR */}
-      <div className={'fixed top-0 left-0 right-0 z-10 h-24'}>
+      <div className={'fixed left-0 right-0 top-0 z-10 h-24'}>
         <div className={'flex h-full flex-row items-center justify-between '}>
           <div className={'p-6'}>
             <Image src={Logo} alt={'Space mission logo'} />
@@ -83,7 +83,7 @@ const Index = () => {
 
       {/*  MOBILE MENU */}
       <div
-        className={`fixed right-0 top-0 bottom-0 w-64 bg-tertiary/5 bg-blue-900 py-32 pl-8 backdrop-blur-2xl transition  duration-500 md:hidden ${
+        className={`fixed bottom-0 right-0 top-0 w-64 bg-blue-900 bg-tertiary/5 py-32 pl-8 backdrop-blur-2xl transition  duration-500 md:hidden ${
           mobileMenuIsOpen
             ? 'translate-x-0 bg-tertiary/5  '
             : 'translate-x-full bg-primary/50 '

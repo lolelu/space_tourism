@@ -25,12 +25,20 @@ const MenuLink = ({
           'relative flex grow gap-3 text-tertiary md:grow-0  md:items-center md:justify-center'
         }
       >
-        <p className={'text-md font-condensed font-bold md:hidden lg:block'}>
+        <p
+          className={
+            'font-condensed text-base font-bold tracking-subtitle md:hidden lg:block'
+          }
+        >
           {linkNumber}
         </p>
-        <p className={`flex-grow font-condensed uppercase `}>{linkName}</p>
+        <p
+          className={`flex-grow font-condensed text-base uppercase md:text-sm lg:text-base `}
+        >
+          {linkName}
+        </p>
         <div
-          className={`absolute right-0 top-0 bottom-0 w-1 bg-white md:top-auto md:left-0 md:-bottom-9 md:h-1 md:w-auto ${
+          className={`absolute bottom-0 right-0 top-0 w-1 bg-white md:-bottom-9 md:left-0 md:top-auto md:h-1 md:w-auto ${
             !isActive && 'hidden'
           }`}
         ></div>

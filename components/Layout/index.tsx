@@ -70,12 +70,11 @@ const Index = ({
         <Image
           src={background}
           alt={'Background, view of the earth from space'}
-          fill={true}
           quality={100}
           priority={true}
           placeholder={'empty'}
           className={
-            'absolute top-0 bottom-0 left-0 right-0 -z-10 object-cover object-bottom lg:object-right'
+            'absolute bottom-0 left-0 right-0 top-0 -z-10 object-cover object-bottom lg:object-right'
           }
         />
         <Navbar />
