@@ -11,12 +11,14 @@ const theme = require('tailwindcss/defaultTheme')
 const Index = ({
   children,
   title = '',
+  fullHeight = false,
   mobileBackground = MobileBackground,
   tabletBackground = TabletBackground,
   desktopBackground = DesktopBackground,
 }: {
   children: React.ReactNode
   title?: string
+  fullHeight?: boolean
   mobileBackground?: any
   tabletBackground?: any
   desktopBackground?: any
@@ -66,17 +68,22 @@ const Index = ({
       </Head>
 
       {/* Use Tailwind classes to set the background image style, set the background image using style */}
-      <main className={`relative h-screen  p-6 pt-24 text-tertiary `}>
-        <Image
-          src={background}
-          alt={'Background, view of the earth from space'}
-          quality={100}
-          priority={true}
-          placeholder={'empty'}
-          className={
-            'absolute bottom-0 left-0 right-0 top-0 -z-10 object-cover object-bottom lg:object-right'
-          }
-        />
+      <main
+        className={`relative bg-cover bg-bottom p-6 pt-24 text-tertiary lg:bg-right ${
+          fullHeight ? 'h-[100svh]' : 'min-h-[100svh]'
+        }  `}
+        style={{ backgroundImage: `url(${background.src})` }}
+      >
+        {/*<Image*/}
+        {/*  src={background}*/}
+        {/*  alt={'Background, view of the earth from space'}*/}
+        {/*  quality={100}*/}
+        {/*  priority={true}*/}
+        {/*  placeholder={'empty'}*/}
+        {/*  className={*/}
+        {/*    'absolute bottom-0 left-0 right-0 top-0 -z-10 object-cover object-bottom lg:object-right'*/}
+        {/*  }*/}
+        {/*/>*/}
         <Navbar />
         {children}
       </main>

@@ -3,7 +3,7 @@ import Link from 'next/link'
 export const ExploreButton = ({ onClick }: { onClick?: () => void }) => (
   <Link
     className={
-      'group relative flex h-36 w-36 cursor-pointer items-center justify-center rounded-full bg-tertiary  md:h-[15.125rem] md:w-[15.125rem] lg:h-[17.125rem] lg:w-[17.125rem]'
+      'group relative z-10 flex h-36 w-36 cursor-pointer items-center justify-center rounded-full bg-tertiary  md:h-[15.125rem] md:w-[15.125rem] lg:h-[17.125rem] lg:w-[17.125rem]'
     }
     href={'/destinations'}
   >

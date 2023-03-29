@@ -33,7 +33,7 @@ const menuLinks = [
 const Index = () => {
   const [mobileMenuIsOpen, setMobileMenuIsOpen] = useState(false)
   return (
-    <nav className={'relative isolate z-10'}>
+    <nav className={'relative isolate z-20'}>
       {/*  NAVBAR */}
       <div className={'fixed left-0 right-0 top-0 z-10 h-24'}>
         <div className={'flex h-full flex-row items-center justify-between '}>

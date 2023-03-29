@@ -9,6 +9,7 @@ export default function Home() {
     <>
       <Layout
         title={'Home'}
+        fullHeight={true}
         mobileBackground={MobileBackground}
         tabletBackground={TabletBackground}
         desktopBackground={DesktopBackground}
