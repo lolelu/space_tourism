@@ -6,6 +6,7 @@ import TabletBackground from '@/public/assets/crew/background-crew-tablet.jpg'
 import DesktopBackground from '@/public/assets/crew/background-crew-desktop.jpg'
 import CrewImage from '@/pages/technology/crewImage'
 import { useState } from 'react'
+import CrewData from '@/pages/technology/crewData'
 
 export default function Crew({ crew }: { crew: CrewMember[] }) {
   const [activeCrewMember, setActiveCrewMember] = useState<CrewMember>(crew[0])
@@ -15,9 +16,17 @@ export default function Crew({ crew }: { crew: CrewMember[] }) {
       tabletBackground={TabletBackground}
       mobileBackground={MobileBackground}>
       <PageTitle pageNumber={'02'} pageTitle={'meet your crew'} />
-      <div className={'mx-auto grid  max-w-xs grid-cols-1 md:max-w-[36rem] lg:max-w-none  lg:grid-cols-2 lg:gap-x-40'}>
+      <div className={'mx-auto grid max-w-xs grid-cols-1 md:max-w-[36rem] lg:max-w-none  '}>
         {crew.map(crewMember => (
           <CrewImage
+            crewMember={crewMember}
+            key={crewMember.name}
+            isActive={activeCrewMember.name === crewMember.name}
+          />
+        ))}
+
+        {crew.map(crewMember => (
+          <CrewData
             crewMember={crewMember}
             key={crewMember.name}
             isActive={activeCrewMember.name === crewMember.name}
