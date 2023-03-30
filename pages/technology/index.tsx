@@ -1,15 +1,17 @@
 import Layout from '@/components/Layout'
 import { Technologies } from '@/types/data'
 import PageTitle from '@/components/pageTitle'
+import MobileBackground from '@/public/assets/technology/background-technology-mobile.jpg'
+import TabletBackground from '@/public/assets/technology/background-technology-tablet.jpg'
+import DesktopBackground from '@/public/assets/technology/background-technology-desktop.jpg'
 
-export default function Technology({
-  technologies,
-}: {
-  technologies: Technologies[]
-}) {
+export default function Technology({ technologies }: { technologies: Technologies[] }) {
   return (
-    <Layout>
-      <PageTitle pageNumber={'03'} pageTitle={'PICK YOUR DESTINATION'} />
+    <Layout
+      desktopBackground={DesktopBackground}
+      tabletBackground={TabletBackground}
+      mobileBackground={MobileBackground}>
+      <PageTitle pageNumber={'03'} pageTitle={'space launch 101'} />
     </Layout>
   )
 }

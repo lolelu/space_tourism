@@ -1,28 +1,25 @@
 import React, { useEffect, useState } from 'react'
 import Head from 'next/head'
 import Navbar from '@/components/Navbar'
-import MobileBackground from '@/public/assets/home/background-home-mobile.jpg'
-import TabletBackground from '@/public/assets/home/background-home-tablet.jpg'
-import DesktopBackground from '@/public/assets/home/background-home-desktop.jpg'
-import Image from 'next/image'
-
 const theme = require('tailwindcss/defaultTheme')
 
-const Index = ({
-  children,
-  title = '',
-  fullHeight = false,
-  mobileBackground = MobileBackground,
-  tabletBackground = TabletBackground,
-  desktopBackground = DesktopBackground,
-}: {
+interface IndexProps {
   children: React.ReactNode
   title?: string
   fullHeight?: boolean
   mobileBackground?: any
   tabletBackground?: any
   desktopBackground?: any
-}) => {
+}
+
+const Index = ({
+  children,
+  title = '',
+  fullHeight = false,
+  mobileBackground,
+  tabletBackground,
+  desktopBackground,
+}: IndexProps) => {
   // Define breakpoints as an object with names and minimum widths
   const breakpoints = {
     base: '0px',
@@ -68,17 +65,17 @@ const Index = ({
       </Head>
       <Navbar />
       {/* Use Tailwind classes to set the background image style, set the background image using style */}
+
+      {/*REFACTOR THIS CODE, WITH DINAMIC CLASSES FOR EACH BREAKPOINT, IT'S EASY*/}
       <main
-        className={`relative bg-cover bg-bottom text-tertiary md:bg-center lg:bg-right   ${
+        className={`relative  bg-cover bg-bottom text-tertiary md:bg-center lg:bg-right   ${
           fullHeight ? 'h-[100svh]' : 'min-h-[100svh]'
         }  `}
-        style={{ backgroundImage: `url(${background.src})` }}
-      >
+        style={{ backgroundImage: `url(${background.src})` }}>
         <section
           className={`${
             fullHeight ? 'h-[100svh]' : 'min-h-[100svh]'
-          } mx-auto p-6  pt-24 md:px-20 lg:max-w-screen-xl lg:px-[5.5rem] `}
-        >
+          } mx-auto flex  flex-col items-center  justify-center gap-2 p-6 pt-24 md:gap-8 md:px-20 lg:max-w-screen-xl lg:items-stretch lg:px-[5.5rem]  `}>
           {children}
         </section>
       </main>

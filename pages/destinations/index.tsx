@@ -8,67 +8,42 @@ import DesktopBackground from '@/public/assets/destination/background-destinatio
 import { PlanetImage } from '@/pages/destinations/planetImage'
 import { PlanetData } from '@/pages/destinations/planetData'
 
-export default function Destinations({
-  destinations,
-}: {
-  destinations: Destination[]
-}) {
-  const [activeDestination, setActiveDestination] = useState<Destination>(
-    destinations[0],
-  )
+export default function Destinations({ destinations }: { destinations: Destination[] }) {
+  const [activeDestination, setActiveDestination] = useState<Destination>(destinations[0])
   return (
     <Layout
       desktopBackground={DesktopBackground}
       tabletBackground={TabletBackground}
-      mobileBackground={MobileBackground}
-    >
+      mobileBackground={MobileBackground}>
       <PageTitle pageNumber={'01'} pageTitle={'PICK YOUR DESTINATION'} />
 
-      <div
-        className={
-          'mx-auto grid min-h-full max-w-xs grid-cols-1 md:max-w-[36rem] lg:max-w-none lg:grid-cols-2  lg:gap-x-40 '
-        }
-      >
-        {destinations.map((destination) => (
-          <PlanetImage
-            key={destination.name}
-            activeDestination={activeDestination}
-            destination={destination}
-          />
+      <div className={'mx-auto grid  max-w-xs grid-cols-1 md:max-w-[36rem] lg:max-w-none  lg:grid-cols-2 lg:gap-x-40'}>
+        {destinations.map(destination => (
+          <PlanetImage key={destination.name} activeDestination={activeDestination} destination={destination} />
         ))}
 
         {/*  Planet selector*/}
         <div
           className={
             'col-start-1 row-start-2  mb-5 mt-6 flex flex-row items-center justify-center  md:mb-8 md:mt-[3.125rem] lg:col-start-2 lg:row-start-1 lg:mb-0 lg:mt-0 lg:items-start '
-          }
-        >
-          <div
-            className={
-              'flex  basis-full flex-row items-center justify-center gap-x-9 lg:justify-start'
-            }
-          >
-            {destinations.map((destination) => (
+          }>
+          <div className={'flex  basis-full flex-row items-center justify-center gap-x-9 lg:justify-start'}>
+            {destinations.map(destination => (
               <button
-                className={
-                  'group relative text-center font-condensed text-sm uppercase tracking-subtitle'
-                }
+                className={'group relative text-center font-condensed text-sm uppercase tracking-subtitle'}
                 key={destination.name}
-                onClick={() => setActiveDestination(destination)}
-              >
+                onClick={() => setActiveDestination(destination)}>
                 <div
                   className={`absolute -bottom-2 h-1 w-full transform bg-secondary transition duration-500 ${
                     activeDestination.name === destination.name
                       ? ' scale-x-100 opacity-100 delay-500'
                       : ' scale-x-0 opacity-0 delay-0'
-                  }`}
-                ></div>
+                  }`}></div>
 
                 <div
                   className={`absolute -bottom-2 h-1 w-full transform bg-secondary opacity-0 transition duration-500 group-hover:opacity-50 ${
                     activeDestination.name == destination.name && 'invisible'
-                  }`}
-                ></div>
+                  }`}></div>
 
                 {destination.name}
               </button>
@@ -76,12 +51,8 @@ export default function Destinations({
           </div>
         </div>
 
-        {destinations.map((destination) => (
-          <PlanetData
-            key={destination.name}
-            activeDestination={activeDestination}
-            destination={destination}
-          />
+        {destinations.map(destination => (
+          <PlanetData key={destination.name} activeDestination={activeDestination} destination={destination} />
         ))}
       </div>
     </Layout>
