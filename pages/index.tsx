@@ -16,7 +16,7 @@ export default function Home() {
       >
         <div
           className={
-            'flex h-full flex-col items-center justify-between pb-6 md:justify-around lg:flex-row lg:items-end lg:justify-between lg:px-24 lg:pb-24 xl:px-36'
+            'flex h-full flex-col items-center justify-between pb-6 md:justify-around lg:flex-row lg:items-end lg:justify-between  lg:pb-24 '
           }
         >
           <div

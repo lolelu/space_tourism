@@ -37,9 +37,9 @@ const Index = () => {
       {/*  NAVBAR */}
       <div className={'fixed left-0 right-0 top-0 z-10 h-24'}>
         <div className={'flex h-full flex-row items-center justify-between '}>
-          <div className={'p-6'}>
+          <Link className={'p-6'} href={'/'}>
             <Image src={Logo} alt={'Space mission logo'} />
-          </div>
+          </Link>
 
           <div className={'relative hidden grow lg:flex'}>
             <hr

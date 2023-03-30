@@ -26,7 +26,7 @@ const Index = ({
   // Define breakpoints as an object with names and minimum widths
   const breakpoints = {
     base: '0px',
-    sm: theme.screens.sm,
+    md: theme.screens.md,
     lg: theme.screens.lg,
   }
 
@@ -54,7 +54,7 @@ const Index = ({
   let background = desktopBackground
   if (currentBreakpoint === 'base') {
     background = mobileBackground
-  } else if (currentBreakpoint === 'sm') {
+  } else if (currentBreakpoint === 'md') {
     background = tabletBackground
   }
 
@@ -66,26 +66,21 @@ const Index = ({
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href={'/assets/favicon-32x32.png'} />
       </Head>
-
+      <Navbar />
       {/* Use Tailwind classes to set the background image style, set the background image using style */}
       <main
-        className={`relative bg-cover bg-bottom p-6 pt-24 text-tertiary lg:bg-right ${
+        className={`relative bg-cover bg-bottom text-tertiary md:bg-center lg:bg-right   ${
           fullHeight ? 'h-[100svh]' : 'min-h-[100svh]'
         }  `}
         style={{ backgroundImage: `url(${background.src})` }}
       >
-        {/*<Image*/}
-        {/*  src={background}*/}
-        {/*  alt={'Background, view of the earth from space'}*/}
-        {/*  quality={100}*/}
-        {/*  priority={true}*/}
-        {/*  placeholder={'empty'}*/}
-        {/*  className={*/}
-        {/*    'absolute bottom-0 left-0 right-0 top-0 -z-10 object-cover object-bottom lg:object-right'*/}
-        {/*  }*/}
-        {/*/>*/}
-        <Navbar />
-        {children}
+        <section
+          className={`${
+            fullHeight ? 'h-[100svh]' : 'min-h-[100svh]'
+          } mx-auto p-6  pt-24 md:px-20 lg:max-w-screen-xl lg:px-[5.5rem] `}
+        >
+          {children}
+        </section>
       </main>
     </>
   )

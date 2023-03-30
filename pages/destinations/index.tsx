@@ -1,82 +1,12 @@
 import Layout from '@/components/Layout'
 import { Destination } from '@/types/data'
 import { useState } from 'react'
-import Image from 'next/image'
 import PageTitle from '@/components/pageTitle'
 import MobileBackground from '@/public/assets/destination/background-destination-mobile.jpg'
 import TabletBackground from '@/public/assets/destination/background-destination-tablet.jpg'
 import DesktopBackground from '@/public/assets/destination/background-destination-desktop.jpg'
-const PlanetImage = (props: {
-  activeDestination: Destination
-  destination: Destination
-}) => (
-  <div
-    className={` col-start-1 row-start-1 transform justify-self-center transition-all duration-500 ease-in-out
-              ${
-                props.activeDestination.name === props.destination.name
-                  ? 'scale-100 opacity-100 delay-500'
-                  : 'scale-50 opacity-0 delay-0'
-              }`}
-  >
-    <Image
-      src={props.destination.images.webp}
-      alt={props.destination.name + ' image'}
-      className={
-        'h-[10.625rem] w-[10.625rem] md:h-[15.125rem] md:w-[15.125rem] lg:h-[17.125rem] lg:w-[17.125rem]'
-      }
-      width={445}
-      height={445}
-    />
-  </div>
-)
-
-const PlanetData = (props: {
-  activeDestination: Destination
-  destination: Destination
-}) => (
-  <div
-    className={`col-start-1 row-start-3 flex flex-col items-center justify-center gap-8 text-center transition-all duration-500 ease-in-out 
-    ${
-      props.activeDestination.name === props.destination.name
-        ? 'opacity-100 delay-500'
-        : 'opacity-0 delay-0'
-    }`}
-  >
-    <div>
-      <h1 className={'font-serif text-[3.5rem]/[4rem] uppercase'}>
-        {props.destination.name}
-      </h1>
-      <p className={'text-[0.9375rem]/[1.5625rem] text-secondary'}>
-        {props.destination.description}
-      </p>
-    </div>
-    <hr className={'border-1 w-full border-[#383B4B] '} />
-    <div className={'space-y-3'}>
-      <h6
-        className={
-          'font-condensed text-sm uppercase tracking-subtitle text-secondary'
-        }
-      >
-        avg. Distance
-      </h6>
-      <p className={'font-serif text-[1.75rem]/[2rem] uppercase'}>
-        {props.destination.distance}
-      </p>
-    </div>
-    <div className={'space-y-3'}>
-      <h6
-        className={
-          'font-condensed text-sm uppercase tracking-subtitle text-secondary'
-        }
-      >
-        Est. Travel time
-      </h6>
-      <p className={'font-serif text-[1.75rem]/[2rem] uppercase'}>
-        {props.destination.travel}
-      </p>
-    </div>
-  </div>
-)
+import { PlanetImage } from '@/pages/destinations/planetImage'
+import { PlanetData } from '@/pages/destinations/planetData'
 
 export default function Destinations({
   destinations,
@@ -94,7 +24,11 @@ export default function Destinations({
     >
       <PageTitle pageNumber={'01'} pageTitle={'PICK YOUR DESTINATION'} />
 
-      <div className={'mx-auto grid max-w-xs grid-cols-1 pt-4 '}>
+      <div
+        className={
+          'mx-auto grid min-h-full max-w-xs grid-cols-1 md:max-w-[36rem] lg:max-w-none lg:grid-cols-2  lg:gap-x-40 '
+        }
+      >
         {destinations.map((destination) => (
           <PlanetImage
             key={destination.name}
@@ -106,27 +40,40 @@ export default function Destinations({
         {/*  Planet selector*/}
         <div
           className={
-            'col-start-1 row-start-2 mb-5 mt-6 flex items-center justify-evenly '
+            'col-start-1 row-start-2  mb-5 mt-6 flex flex-row items-center justify-center  md:mb-8 md:mt-[3.125rem] lg:col-start-2 lg:row-start-1 lg:mb-0 lg:mt-0 lg:items-start '
           }
         >
-          {destinations.map((destination) => (
-            <button
-              className={
-                'relative text-center font-condensed text-sm uppercase tracking-subtitle'
-              }
-              key={destination.name}
-              onClick={() => setActiveDestination(destination)}
-            >
-              <div
-                className={`absolute -bottom-2 h-1 w-full transform bg-secondary transition duration-500 ${
-                  activeDestination.name === destination.name
-                    ? ' scale-x-100 opacity-100 delay-500'
-                    : ' scale-x-0 opacity-0 delay-0'
-                }`}
-              ></div>
-              {destination.name}
-            </button>
-          ))}
+          <div
+            className={
+              'flex  basis-full flex-row items-center justify-center gap-x-9 lg:justify-start'
+            }
+          >
+            {destinations.map((destination) => (
+              <button
+                className={
+                  'group relative text-center font-condensed text-sm uppercase tracking-subtitle'
+                }
+                key={destination.name}
+                onClick={() => setActiveDestination(destination)}
+              >
+                <div
+                  className={`absolute -bottom-2 h-1 w-full transform bg-secondary transition duration-500 ${
+                    activeDestination.name === destination.name
+                      ? ' scale-x-100 opacity-100 delay-500'
+                      : ' scale-x-0 opacity-0 delay-0'
+                  }`}
+                ></div>
+
+                <div
+                  className={`absolute -bottom-2 h-1 w-full transform bg-secondary opacity-0 transition duration-500 group-hover:opacity-50 ${
+                    activeDestination.name == destination.name && 'invisible'
+                  }`}
+                ></div>
+
+                {destination.name}
+              </button>
+            ))}
+          </div>
         </div>
 
         {destinations.map((destination) => (
