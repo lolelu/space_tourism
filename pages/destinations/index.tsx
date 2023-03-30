@@ -5,8 +5,8 @@ import PageTitle from '@/components/pageTitle'
 import MobileBackground from '@/public/assets/destination/background-destination-mobile.jpg'
 import TabletBackground from '@/public/assets/destination/background-destination-tablet.jpg'
 import DesktopBackground from '@/public/assets/destination/background-destination-desktop.jpg'
-import { PlanetImage } from '@/pages/destinations/planetImage'
-import { PlanetData } from '@/pages/destinations/planetData'
+import PlanetImage from '@/pages/destinations/planetImage'
+import PlanetData from '@/pages/destinations/planetData'
 
 export default function Destinations({ destinations }: { destinations: Destination[] }) {
   const [activeDestination, setActiveDestination] = useState<Destination>(destinations[0])
