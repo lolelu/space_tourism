@@ -21,17 +21,17 @@ const Index = ({
   desktopBackground,
 }: IndexProps) => {
   // Define breakpoints as an object with names and minimum widths
-  const breakpoints = {
-    base: '0px',
-    md: theme.screens.md,
-    lg: theme.screens.lg,
-  }
 
   // Initialize state variable for current breakpoint
   const [currentBreakpoint, setCurrentBreakpoint] = useState('')
 
   // Add an event listener to update the current breakpoint on window resize
   useEffect(() => {
+    const breakpoints = {
+      base: '0px',
+      md: theme.screens.md,
+      lg: theme.screens.lg,
+    }
     const handleResize = () => {
       const width = window.innerWidth
       let newBreakpoint = ''
