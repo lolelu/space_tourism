@@ -25,6 +25,18 @@ export default function Crew({ crew }: { crew: CrewMember[] }) {
           />
         ))}
 
+        {/*  Crew selector*/}
+        <div>
+          {crew.map(crewMember => (
+            <button
+              className={`h-2 w-2 rounded-full bg-secondary ${
+                activeCrewMember.name === crewMember.name ? 'opacity-100' : 'opacity-50'
+              }`}
+              key={crewMember.name}
+              onClick={() => setActiveCrewMember(crewMember)}></button>
+          ))}
+        </div>
+
         {crew.map(crewMember => (
           <CrewData
             crewMember={crewMember}
