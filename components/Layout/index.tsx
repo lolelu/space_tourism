@@ -20,8 +20,6 @@ const Index = ({
   tabletBackground,
   desktopBackground,
 }: IndexProps) => {
-  // Define breakpoints as an object with names and minimum widths
-
   // Initialize state variable for current breakpoint
   const [currentBreakpoint, setCurrentBreakpoint] = useState('')
 
@@ -42,17 +40,20 @@ const Index = ({
       }
       setCurrentBreakpoint(newBreakpoint)
     }
-    window.addEventListener('resize', handleResize)
     handleResize()
+    window.addEventListener('resize', handleResize)
     return () => window.removeEventListener('resize', handleResize)
   }, [])
 
   // Determine the background URL based on the current breakpoint
-  let background = desktopBackground
-  if (currentBreakpoint === 'base') {
-    background = mobileBackground
-  } else if (currentBreakpoint === 'md') {
-    background = tabletBackground
+  const getBackgroundUrl = () => {
+    if (currentBreakpoint === 'base') {
+      return `url(${mobileBackground.src})`
+    } else if (currentBreakpoint === 'md') {
+      return `url(${tabletBackground.src})`
+    } else {
+      return `url(${desktopBackground.src})`
+    }
   }
 
   return (
@@ -65,17 +66,15 @@ const Index = ({
       </Head>
       <Navbar />
       {/* Use Tailwind classes to set the background image style, set the background image using style */}
-
-      {/*REFACTOR THIS CODE, WITH DINAMIC CLASSES FOR EACH BREAKPOINT, IT'S EASY*/}
       <main
-        className={`relative  bg-cover bg-bottom text-tertiary md:bg-center lg:bg-right   ${
+        className={`relative bg-cover bg-bottom text-tertiary md:bg-center lg:bg-right ${
           fullHeight ? 'h-[100svh]' : 'min-h-[100svh]'
-        }  `}
-        style={{ backgroundImage: `url(${background.src})` }}>
+        }`}
+        style={{ backgroundImage: getBackgroundUrl() }}>
         <section
           className={`${
             fullHeight ? 'h-[100svh]' : 'min-h-[100svh]'
-          } mx-auto flex  flex-col items-center  justify-center gap-2 p-6 pt-24 md:gap-8 md:px-20 lg:max-w-screen-xl lg:items-stretch lg:px-[5.5rem]  `}>
+          } lg:px-[5.5rem]' mx-auto flex flex-col items-center justify-center gap-2 p-6 pt-24 md:gap-8 md:px-20 lg:max-w-screen-xl lg:items-stretch`}>
           {children}
         </section>
       </main>
