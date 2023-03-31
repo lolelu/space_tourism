@@ -4,9 +4,9 @@ import PageTitle from '@/components/pageTitle'
 import MobileBackground from '@/public/assets/crew/background-crew-mobile.jpg'
 import TabletBackground from '@/public/assets/crew/background-crew-tablet.jpg'
 import DesktopBackground from '@/public/assets/crew/background-crew-desktop.jpg'
-import CrewImage from '@/pages/technology/crewImage'
+import CrewImage from '@/components/Crew/crewImage'
 import { useState } from 'react'
-import CrewData from '@/pages/technology/crewData'
+import CrewData from '@/components/Crew/crewData'
 
 export default function Crew({ crew }: { crew: CrewMember[] }) {
   const [activeCrewMember, setActiveCrewMember] = useState<CrewMember>(crew[0])
