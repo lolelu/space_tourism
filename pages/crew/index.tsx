@@ -16,7 +16,8 @@ export default function Crew({ crew }: { crew: CrewMember[] }) {
       tabletBackground={TabletBackground}
       mobileBackground={MobileBackground}>
       <PageTitle pageNumber={'02'} pageTitle={'meet your crew'} />
-      <div className={'mx-auto grid max-w-xs grid-cols-1 gap-4  md:max-w-[36rem] lg:max-w-none '}>
+      <div
+        className={'mx-auto grid max-w-xs grid-cols-1 gap-4  md:max-w-[36rem]  lg:max-w-none lg:grid-cols-2 lg:gap-0'}>
         {crew.map(crewMember => (
           <CrewImage
             crewMember={crewMember}
@@ -26,11 +27,14 @@ export default function Crew({ crew }: { crew: CrewMember[] }) {
         ))}
 
         {/*  Crew selector*/}
-        <div className={'flex flex-row items-center justify-center gap-4'}>
+        <div
+          className={
+            'flex flex-row items-center justify-center gap-4 lg:col-start-1 lg:row-span-1 lg:row-start-2 lg:justify-start lg:gap-6 '
+          }>
           {crew.map(crewMember => (
             <button
-              className={`h-2.5 w-2.5 rounded-full bg-secondary ${
-                activeCrewMember.name === crewMember.name ? 'opacity-100' : 'opacity-50'
+              className={`h-2.5 w-2.5 rounded-full bg-secondary lg:h-4 lg:w-4  ${
+                activeCrewMember.name === crewMember.name ? 'opacity-100' : 'opacity-50 hover:opacity-75'
               }`}
               key={crewMember.name}
               onClick={() => setActiveCrewMember(crewMember)}></button>
